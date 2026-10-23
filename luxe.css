@@ -1,0 +1,207 @@
+/* luxe.css — dimuat SETELAH style.css (tidak mengubah style.css) */
+:root{--g2:#d9b779}
+
+/* ===== Perbaikan properti rusak di style.css (backdrop-color, backdrop--webkit-…) ===== */
+.music,.autoscroll{-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.dock{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(176,69,94,.18)}
+#hero .cd b{-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 0 22px rgba(217,91,124,.25)}
+
+/* ===== Transisi tetap TEBAL saat gulir otomatis aktif ===== */
+body.autoing .rv{filter:blur(6px)}
+body.autoing .rv.in,body.autoing .map.rv{filter:blur(0)}
+body.autoing .w,body.autoing .ch{filter:blur(3px)}
+body.autoing .in .w,body.autoing .in .ch{filter:blur(0)}
+.sec{transition:opacity 2s ease,transform 2.6s var(--ease)}
+.sec.pre{transform:translateY(46px)}
+.head::after{background:linear-gradient(90deg,transparent,var(--g2),transparent)}
+
+/* ===== Teks Arab & salam ===== */
+.ar{font:400 clamp(1.5rem,6.2vw,2.1rem)/2.1 'Amiri',serif;direction:rtl;max-width:22em;margin:0 auto 1.4rem;color:var(--brown)}
+.dark .ar,.cover .ar,.hero .ar{color:var(--champ)}
+.cover .ar{font-size:1.45rem;margin-bottom:.4rem;line-height:1.8}
+.salam{font:clamp(1.5rem,6vw,2.1rem)/1.3 var(--script);color:var(--gold);margin-bottom:1.2rem;text-align:center}
+.doa{font:italic 1.05rem/1.7 var(--serif);max-width:30ch;margin:.2rem auto 0;opacity:.92}
+
+/* ===== Ornamen: bintang khatam berputar, orb cahaya, pembatas ===== */
+.sw{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+#cover .sw{z-index:0}.cover-in{position:relative;z-index:1}
+.sec:nth-of-type(even) #cover .orb{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,214,150,.5),transparent 70%);animation:orb 13s ease-in-out infinite alternate}
+@keyframes orb{to{translate:34px -70px;opacity:.25}}
+.divider{display:block;width:min(240px,70%);margin:1.6rem auto;color:var(--g2)}
+.divider svg{display:block;width:100%;height:auto}
+.divider path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 2.6s var(--ease) .3s}
+.divider.in path{stroke-dashoffset:0}
+
+/* bingkai emas ganda di cover, hero, penutup */
+.frame{position:absolute;inset:14px;border:1px solid rgba(217,183,121,.6);pointer-events:none;z-index:1}
+.frame::before{content:"";position:absolute;inset:5px;border:1px solid rgba(217,183,121,.25)}
+
+/* ===== Foto berbingkai lengkung (mihrab) ===== */
+.portrait,.wide{border-radius:999px 999px 0 0;box-shadow:0 0 0 7px var(--ivory),0 0 0 8px var(--g2),0 30px 50px -28px rgba(42,13,20,.6)}
+.portrait::before,.wide::before{border-radius:inherit}
+.ph:empty::before{content:"M \2665  A";inset:0;border:0;opacity:1;transform:none;display:grid;place-items:center;font:3.2rem var(--script);color:#fff;text-shadow:0 0 22px rgba(176,69,94,.6)}
+
+/* ===== Kartu acara berbingkai ===== */
+.event{position:relative;padding:2.4rem 1.4rem;border:1px solid rgba(217,183,121,.45)}
+.event+.event{border-top:1px solid rgba(217,183,121,.45);padding-top:2.4rem}
+.event::before,.event::after{content:"";position:absolute;width:18px;height:18px;border:2px solid var(--g2)}
+.event::before{top:-1px;left:-1px;border-right:0;border-bottom:0}
+.event::after{bottom:-1px;right:-1px;border-left:0;border-top:0}
+.time{color:var(--g2)}
+
+/* ===== Kalender November 2026 ===== */
+.cal{max-width:300px;margin:2rem auto 0;padding:1.2rem 1rem;border:1px solid rgba(217,183,121,.45)}
+.cal h4{font:400 1.2rem var(--serif);letter-spacing:.3em;text-transform:uppercase;color:var(--g2);margin-bottom:.8rem}
+.cal div{display:grid;grid-template-columns:repeat(7,1fr);gap:.15rem;font-size:.82rem}
+.cal b{font-weight:400;font-size:.62rem;letter-spacing:.1em;opacity:.6;padding:.3rem 0}
+.cal span{display:grid;place-items:center;aspect-ratio:1;position:relative;isolation:isolate}
+.cal .me{color:#fff;font-weight:500}
+.cal .me::before{content:"";position:absolute;inset:-7px;z-index:-1;background:#d95b7c;filter:drop-shadow(0 0 8px rgba(217,91,124,.8));animation:dpBeat 1.6s ease-in-out infinite;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54z'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ===== Interaktif: segel, tap hati, lentera doa, detik hitung mundur ===== */
+.envelope{cursor:pointer}
+.env-seal{animation:dpBeat 2s ease-in-out infinite}
+.tapheart{position:fixed;z-index:99;width:16px;height:16px;margin:-8px;pointer-events:none;color:#e4708e;animation:thUp 1.4s ease-out forwards}
+.tapheart .dp-h{width:100%;height:100%;fill:currentColor;animation:none}
+@keyframes thUp{to{transform:translate(var(--dx),-90px) scale(.5) rotate(var(--r));opacity:0}}
+.lanterns{position:fixed;top:0;bottom:0;left:0;right:0;margin:0 auto;width:min(100%,var(--col));overflow:hidden;pointer-events:none;z-index:97}
+.ln{position:absolute;bottom:-60px;border-radius:40% 40% 28% 28%;background:linear-gradient(#ffe6b0,#f5a45a);box-shadow:0 0 26px 9px rgba(255,190,110,.55);opacity:0;animation:lnUp var(--t,10s) ease-in both,lnSway 3s ease-in-out infinite alternate}
+@keyframes lnUp{10%{opacity:1}80%{opacity:1}to{transform:translateY(-115vh);opacity:0}}
+@keyframes lnSway{from{translate:-14px 0}to{translate:14px 0}}
+.amin{text-align:center;margin-bottom:.5rem}
+.pop{animation:pop .6s var(--ease)}
+@keyframes pop{40%{transform:scale(1.14);text-shadow:0 0 22px rgba(255,200,215,.9)}}
+
+@media(prefers-reduced-motion:reduce){.sec.pre{transform:none}.orb,.cal .me::before,.env-seal,.ln{animation:none}.divider path{stroke-dashoffset:0}}
+
+/* ===== Ilustrasi bunga: karangan, buket sudut, mahkota bunga ===== */
+.garland{display:block;width:min(340px,86%);margin:0 auto 1.8rem;color:var(--g2);clip-path:inset(0 50% 0 50%);transition:clip-path 2.6s var(--ease) .2s}
+.garland.in{clip-path:inset(0)}
+.garland svg,.crown svg,.bq svg{display:block;width:100%;height:auto;overflow:visible}
+.rz{color:#d95b7c}
+.bq{position:absolute;width:clamp(150px,44vw,230px);aspect-ratio:1;color:var(--g2);opacity:0;pointer-events:none;z-index:1;transition:opacity 2.4s ease 1s;animation:sway 7s ease-in-out infinite alternate}
+.bq.in{opacity:.7}
+.bq.bl{bottom:0;left:0;transform-origin:0 100%}
+.bq.tr{top:0;right:0;transform:rotate(180deg);transform-origin:100% 0}
+.couple{padding-top:1.6rem}
+.person{position:relative}
+.crown{position:absolute;top:-30px;left:50%;translate:-50% 0;width:160px;z-index:3;pointer-events:none;color:var(--g2)}
+
+/* ===== Foto miring mengikuti gerak HP (atau mouse di laptop) ===== */
+:root{--tx:0;--ty:0}
+.ph{transform:perspective(900px) rotateY(calc(var(--tx)*7deg)) rotateX(calc(var(--ty)*-6deg))}
+.ph img{scale:1.1;translate:calc(var(--tx)*-10px) calc(var(--ty)*-10px)}
+@media(prefers-reduced-motion:reduce){.bq{animation:none}.garland{clip-path:none}}
+
+/* ===== Kelopak mawar halus (pengganti bintang) ===== */
+.wd,.ltr{font-style:inherit}
+.pt{position:absolute;top:-30px;border-radius:70% 0 70% 30%;background:linear-gradient(135deg,#f7c3d0,#d95b7c);opacity:0;animation:ptFall 22s linear infinite}
+.dark .pt,#cover .pt{background:linear-gradient(135deg,#ffd9e2,#e4708e)}
+@keyframes ptFall{0%{opacity:0;transform:translate3d(0,0,0) rotate(0)}10%{opacity:.34}50%{transform:translate3d(calc(var(--dx)*-.6),calc(var(--dy)*.5),0) rotate(calc(var(--r)*.5))}90%{opacity:.3}100%{opacity:0;transform:translate3d(var(--dx),var(--dy),0) rotate(var(--r))}}
+
+/* ===== Cover sinematik ===== */
+.cover-in{animation:cam 16s ease-out both}
+@keyframes cam{from{transform:scale(1.07)}to{transform:none}}
+.bloom{position:absolute;left:50%;top:42%;width:150vmax;aspect-ratio:1;translate:-50% -50%;background:radial-gradient(circle,rgba(255,214,160,.3),transparent 55%);animation:bloom 5s ease-out both}
+@keyframes bloom{from{scale:.2;opacity:0}40%{opacity:1}to{scale:1;opacity:.55}}
+.names .ltr{display:inline-block;opacity:0;filter:blur(10px);transform:translateY(.5em) scale(1.25);animation:ltr 1.8s var(--ease) forwards;animation-delay:calc(1.5s + var(--i)*.13s)}
+@keyframes ltr{to{opacity:1;filter:blur(0);transform:none}}
+.gl{display:block;height:1px;width:min(240px,60%);margin:1rem auto;background:linear-gradient(90deg,transparent,var(--g2),transparent);transform:scaleX(0);animation:glLine 2s var(--ease) 2.6s forwards}
+@keyframes glLine{to{transform:scaleX(1)}}
+
+/* ===== Kilau emas pada nama & judul ===== */
+.names,.big,.head,.sign{position:relative}
+.spk{position:absolute;width:var(--s);height:var(--s);pointer-events:none;background:radial-gradient(circle,#fff 0,#f1dcae 35%,#d9b779 70%);clip-path:polygon(50% 0,59% 41%,100% 50%,59% 59%,50% 100%,41% 59%,0 50%,41% 41%);opacity:0;animation:twk 4s ease-in-out infinite}
+@keyframes twk{0%,100%{opacity:0;transform:scale(.3) rotate(0)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+.big{animation:glow 5s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 0 rgba(217,183,121,0)}to{text-shadow:0 0 26px rgba(217,183,121,.55)}}
+
+/* ===== RSVP & ucapan lebih mewah ===== */
+.crest{width:min(220px,70%);margin:2rem auto 0;color:var(--g2)}
+.crest svg{display:block;width:100%;height:auto}
+.form{position:relative;padding:2rem 1.4rem;border:1px solid rgba(217,183,121,.55);background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25))}
+#wishes .form{background:rgba(255,255,255,.05)}
+.form::before{content:"";position:absolute;inset:6px;border:1px solid rgba(217,183,121,.25);pointer-events:none}
+.form input:focus,.form textarea:focus,.form select:focus{outline:0;border-color:var(--g2);box-shadow:0 1px 0 0 var(--g2),0 10px 24px -16px var(--g2)}
+.radio input:checked+span{box-shadow:0 8px 22px -10px rgba(176,69,94,.8)}
+.form button.btn{background-image:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);background-size:250% 100%;background-repeat:no-repeat;animation:shineBg 3.8s ease-in-out infinite}
+@keyframes shineBg{from{background-position:150% 0}to{background-position:-50% 0}}
+.wish{position:relative;padding:1.6rem 1.4rem 1.4rem 1.8rem;border-color:rgba(217,183,121,.4);background:rgba(255,255,255,.04)}
+.wish::before{content:"\201C";position:absolute;top:-.1em;left:.5rem;font:5rem/1 var(--serif);color:var(--g2);opacity:.35}
+.wish::after{content:"";position:absolute;left:0;top:12%;bottom:12%;width:2px;background:linear-gradient(transparent,var(--g2),transparent)}
+.wish h4::before{content:"\2665  ";font-size:.7em;color:#e4708e}
+
+@media(prefers-reduced-motion:reduce){.pt,.spk,.big,.form button.btn,.bloom,.cover-in{animation:none}.names .ltr{animation:none;opacity:1;filter:none;transform:none}.gl{animation:none;transform:none}}
+
+/* ===== Garis waktu Our Story bercahaya ===== */
+.story{position:relative}
+.story .chapter{position:relative;padding-left:1.8rem}
+.tl{position:absolute;width:1px;background:rgba(217,183,121,.35);pointer-events:none}
+.tl b{position:absolute;inset:0;background:linear-gradient(#d95b7c,#d9b779);transform-origin:top;transform:scaleY(0);box-shadow:0 0 10px rgba(217,91,124,.8)}
+.tl i{position:absolute;left:-5px;top:-5px;width:11px;height:11px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(217,91,124,.3),0 0 22px 7px rgba(217,91,124,.75)}
+.tn{position:absolute;left:0;top:1.2rem;width:11px;height:11px;margin-left:-5px;border-radius:50%;border:1px solid var(--g2);background:var(--ivory);transition:background .8s,box-shadow .8s,border-color .8s}
+.tn.lit{background:#d95b7c;border-color:#d95b7c;box-shadow:0 0 0 5px rgba(217,91,124,.18),0 0 18px 4px rgba(217,91,124,.6)}
+
+/* ===== Wedding Gift & Find Us lebih elegan ===== */
+.gift{box-shadow:0 0 0 1px rgba(217,183,121,.6),0 0 0 6px rgba(217,183,121,.12),0 24px 40px -26px rgba(42,13,20,.55)}
+.gift>.sh{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.38) 50%,transparent 60%);translate:-120% 0;animation:sh 5.5s ease-in-out infinite}
+@keyframes sh{60%,100%{translate:120% 0}}
+.map{box-shadow:0 0 0 1px rgba(217,183,121,.75),0 0 0 8px rgba(217,183,121,.12),0 30px 50px -30px rgba(0,0,0,.7)}
+.map::before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.5);pointer-events:none;z-index:2}
+
+/* ===== Galeri mewah ===== */
+.track{padding-block:14px}
+.slide{border-radius:180px 180px 6px 6px}
+.slide::after{border-radius:170px 170px 2px 2px}
+.slide.active{box-shadow:0 0 0 6px var(--ivory),0 0 0 7px var(--g2),0 34px 50px -28px rgba(42,13,20,.6)}
+.slide.active::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);translate:-130% 0;animation:shSlide 3.2s ease-out .4s 1 both}
+@keyframes shSlide{to{translate:130% 0}}
+.gal-btn:hover:not(:disabled){box-shadow:0 0 18px rgba(217,91,124,.5)}
+
+/* ===== Transisi variatif ===== */
+.rv[data-fx=rise]{transform:translateY(70px) scale(.96);filter:blur(10px)}
+.rv[data-fx=flip]{transform:perspective(800px) rotateX(-38deg) translateY(30px);transform-origin:50% 0}
+.rv[data-fx=bloom]{transform:scale(.7);filter:blur(14px)}
+.rv[data-fx=wipe]{clip-path:inset(0 0 100% 0);transform:translateY(24px);transition-property:opacity,transform,filter,clip-path}
+.rv.in[data-fx=wipe]{clip-path:inset(-20px)}
+.veil{position:fixed;inset:0;z-index:90;pointer-events:none;background:radial-gradient(ellipse 90% 60% at var(--vx) 100%,var(--vc),transparent 70%);animation:veil 2.4s ease-out forwards}
+@keyframes veil{0%{opacity:0;transform:translateY(30%)}30%{opacity:1}100%{opacity:0;transform:translateY(-30%)}}
+
+@media(prefers-reduced-motion:reduce){.gift>.sh,.slide.active::before,.veil{animation:none;display:none}.rv[data-fx=wipe]{clip-path:none}}
+
+/* ===== Perbaikan: elemen dengan efek rise/bloom tidak boleh tetap blur setelah muncul ===== */
+.rv.in[data-fx]{filter:blur(0)}
+
+/* ===== v2: bingkai foto tidak memotong wajah ===== */
+.ph img{transform:scale(1.05);object-position:50% 25%}
+.portrait{aspect-ratio:3/4;max-width:340px;width:100%}
+.wide{aspect-ratio:4/5;max-width:380px;width:100%;margin-inline:auto}
+.ph img[src$="02.jpg"]{object-position:60% 22%}
+.ph img[src$="03.jpg"]{object-position:50% 30%}
+.ph img[src$="04.jpg"]{object-position:50% 35%}
+.ph img[src$="05.jpg"]{object-position:50% 12%}
+.ph img[src$="06.jpg"]{object-position:50% 22%}
+.bg img[src$="01.jpg"]{object-position:50% 42%}
+.bg img[src$="08.jpg"]{object-position:60% 40%}
+.bg img[src$="10.jpg"]{object-position:55% 45%}
+.bg img[src$="11.jpg"]{object-position:50% 50%}
+.slide img{object-position:50% 30%}
+.slide img[src$="07.jpg"]{object-position:50% 40%}
+.slide img[src$="11.jpg"]{object-position:45% 45%}
+.slide img[src$="12.jpg"]{object-position:50% 55%}
+.slide img[src$="08.jpg"]{object-position:65% 40%}
+
+/* ===== v2: tipografi lebih tegas & profesional ===== */
+:root{--disp:'Playfair Display','Cormorant Garamond',Georgia,serif;--label:'Cinzel','Cormorant Garamond',Georgia,serif;--script:'Great Vibes','Pinyon Script',cursive}
+body{font-weight:400;letter-spacing:.012em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.head{font-family:var(--disp);font-weight:500;font-size:clamp(1.9rem,7vw,3rem);letter-spacing:.03em}
+.person h3,.chapter h3,.event h3,.gift h3{font-family:var(--disp);font-weight:500;font-size:1.45rem;letter-spacing:.01em}
+.serif-q,.quote,.doa,.intro-names{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
+.serif-q{font-size:clamp(1.35rem,4.8vw,2.05rem)}
+.small,.cover .small,.hero .small{font-family:var(--label);font-weight:500;letter-spacing:.32em;text-transform:uppercase;font-size:.78rem}
+.daydate,.time,.arrived,.gal-count{font-family:var(--disp);font-weight:500}
+.daydate{font-size:2rem;letter-spacing:.14em}
+.time{font-size:1.9rem}
+.cover .names,.big{text-shadow:0 2px 18px rgba(176,69,94,.18)}
+.cover .names span{font-family:var(--label);font-weight:500;letter-spacing:.2em}
+.muted{font-weight:400;line-height:1.85}

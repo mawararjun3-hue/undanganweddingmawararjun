@@ -476,5 +476,4 @@ setInterval(() => { if ($("#cover").classList.contains("gone")) doveFly(1); }, 2
 
 observe(); onScroll();
 
-// iOS: cegah cubit-zoom supaya halaman tetap pas di tengah
-["gesturestart", "gesturechange"].forEach(t => document.addEventListener(t, e => e.preventDefault()));
+

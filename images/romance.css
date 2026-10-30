@@ -1,0 +1,72 @@
+/* romance.css — lapisan penyempurnaan romantis (dimuat PALING AKHIR) */
+:root{
+  --script:'Allura','Great Vibes','Pinyon Script',cursive;
+  --disp:'Cormorant Garamond','Playfair Display',Georgia,serif;
+  --e2:cubic-bezier(.22,1,.36,1);
+  --rose-gold:linear-gradient(100deg,#f7d9df 0%,#ffeef2 22%,#e9a7b7 45%,#f6dca8 62%,#ffeef2 80%,#e9a7b7 100%);
+}
+html{scroll-behavior:smooth}
+
+/* ===== Tipografi ===== */
+.cover .names,.big,.salam,.sign{font-family:var(--script);font-weight:400;letter-spacing:.01em}
+.cover .names,.big{font-size:clamp(3.4rem,15vw,6.8rem);line-height:1.1}
+.salam{font-size:clamp(1.7rem,6.6vw,2.3rem)}
+.sign{font-size:2.4rem;line-height:1.25}
+.head{font-family:var(--disp);font-style:italic;font-weight:500;font-size:clamp(2.2rem,8.2vw,3.4rem);letter-spacing:.04em}
+.person h3,.chapter h3,.event h3,.gift h3{font-family:var(--disp);font-weight:600;font-size:1.75rem;letter-spacing:.02em}
+.serif-q,.quote,.intro-names{font-family:var(--disp);font-style:italic;font-weight:500}
+.quote{font-size:clamp(1.25rem,4.6vw,1.65rem);line-height:1.65}
+.muted{font-family:var(--disp);font-weight:500;font-size:1.14rem;line-height:1.75;letter-spacing:.015em}
+.wish p{font-family:var(--disp);font-weight:500;font-size:1.12rem}
+.small,.cover .small,.hero .small{font-family:var(--label);font-weight:400;letter-spacing:.4em}
+
+/* nama pengantin: cahaya mawar lembut (warna asli dipertahankan, huruf tetap terlihat) */
+.cover .names,.big{padding:.04em .08em .12em;text-shadow:0 0 30px rgba(232,169,184,.4)}
+/* animasi dipasang di pembungkus huruf, BUKAN di .names (agar animasi .fade bawaan tidak tertimpa) */
+.cover .names .wd{animation:nmGlow 4.5s ease-in-out 4.5s infinite alternate}
+@keyframes nmGlow{from{text-shadow:0 0 16px rgba(232,169,184,.25)}to{text-shadow:0 0 34px rgba(255,200,214,.75),0 0 60px rgba(217,91,124,.35)}}
+
+/* ===== Transisi lebih halus: muncul perlahan, fokus lembut ===== */
+.rv{
+  filter:blur(7px);transform:translateY(34px) scale(.985);
+  transition:opacity 1.9s var(--e2) var(--d,0s),transform 2s var(--e2) var(--d,0s),filter 1.6s ease var(--d,0s)}
+.rv.in{filter:blur(0);transform:none}
+.rv[data-fx=left]{transform:translateX(-56px) scale(.985)}
+.rv[data-fx=right]{transform:translateX(56px) scale(.985)}
+.rv[data-fx=left].in,.rv[data-fx=right].in{transform:none}
+.sec{transition:opacity 2.2s ease,transform 2.8s var(--e2)}
+.btn,.gal-btn,.gc-copy{transition:transform .5s var(--e2),box-shadow .5s ease,background .5s ease,color .5s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 26px -8px rgba(176,69,94,.55)}
+.frame{animation:frameGlow 5.5s ease-in-out infinite alternate}
+@keyframes frameGlow{from{border-color:rgba(217,183,121,.38)}to{border-color:rgba(247,214,160,.85);box-shadow:0 0 18px rgba(217,183,121,.18) inset}}
+
+/* ===== Penutup: hati melayang + hashtag ===== */
+#final .hero-in{padding-bottom:calc(120px + env(safe-area-inset-bottom,0px))}
+.fhearts{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1}
+.fh{position:absolute;bottom:-8%;left:var(--l);font-size:var(--s);color:rgba(244,170,190,.75);
+  text-shadow:0 0 12px rgba(244,170,190,.6);opacity:0;animation:fhUp var(--t) ease-in var(--dl) infinite}
+@keyframes fhUp{0%{transform:translate(0,0) rotate(-8deg) scale(.6);opacity:0}15%{opacity:.85}
+  50%{transform:translate(var(--dx),-55vh) rotate(8deg) scale(1)}100%{transform:translate(calc(var(--dx)*-.6),-115vh) rotate(-6deg) scale(.8);opacity:0}}
+
+.hashtag{margin:2.2rem auto 0;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.ht-cap{font:400 .72rem var(--label);letter-spacing:.38em;text-transform:uppercase;color:var(--champ);opacity:.85}
+.ht{appearance:none;background:none;border:0;cursor:pointer;color:#ffe9ee;font:400 clamp(2rem,10vw,3rem)/1.2 var(--script);
+  white-space:nowrap;padding:.1em .3em;-webkit-tap-highlight-color:transparent}
+.ht .tc{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(16px) rotate(-4deg);
+  transition:opacity 1.2s var(--e2),transform 1.4s var(--e2),filter 1.2s ease;transition-delay:calc(var(--i)*.075s + .5s)}
+.hashtag.in .ht .tc{opacity:1;filter:blur(0);transform:none}
+.hashtag.in .ht{animation:htGlow 3.4s ease-in-out 2.4s infinite alternate}
+@keyframes htGlow{from{text-shadow:0 0 6px rgba(255,214,224,.25)}to{text-shadow:0 0 22px rgba(255,190,206,.9),0 0 40px rgba(217,91,124,.5)}}
+.ht:active{transform:scale(.97)}
+.ht-line{display:block;width:0;height:1px;background:linear-gradient(90deg,transparent,#e8a9b8,#f6dca8,#e8a9b8,transparent);transition:width 2.4s var(--e2) 1.6s}
+.hashtag.in .ht-line{width:min(240px,64%)}
+.ht-heart{color:#ee7f9a;font-size:.9rem;animation:beatH 1.6s ease-in-out infinite}
+@keyframes beatH{0%,100%{transform:scale(1)}20%{transform:scale(1.3)}40%{transform:scale(1)}}
+
+@media(prefers-reduced-motion:reduce){
+  .rv,.rv.in{filter:none;transform:none}
+  .cover .names .wd,.frame,.ht,.ht-heart{animation:none}
+  .fhearts{display:none}
+  .ht .tc{opacity:1;filter:none;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}

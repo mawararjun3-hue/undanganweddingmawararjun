@@ -1,0 +1,62 @@
+/* polish.css — lapisan penyempurna (dimuat PALING AKHIR). Isi & fitur undangan tidak diubah. */
+:root{--pad:max(1.4rem,env(safe-area-inset-left));--padr:max(1.4rem,env(safe-area-inset-right))}
+body{min-height:100vh;min-height:100dvh}
+.hero,.cine,.final{min-height:100vh;min-height:100svh}
+img{-webkit-touch-callout:none}
+
+/* ===== Aman di semua ukuran HP (poni/notch, layar pendek, landscape) ===== */
+.sec{padding-left:var(--pad);padding-right:var(--padr)}
+.cover-in{width:100%;max-width:440px;margin:0 auto}
+@media(max-height:680px){
+  .cover .ar{font-size:1.15rem;line-height:1.6}
+  .cover .names{font-size:clamp(2.8rem,14vw,4.6rem);margin:.3rem 0}
+  .cover .small{font-size:.66rem}
+  .guest{margin-top:.6rem}.guest b{font-size:1.25rem}
+  .cover button{margin-top:1rem}
+}
+@media(max-height:560px){.envelope,.cover .gl,.bq{display:none}}
+@media(max-width:360px){
+  .sec{padding-left:1.1rem;padding-right:1.1rem}
+  .event{padding:1.8rem 1rem}
+  .form{padding:1.6rem 1rem}
+  .gift{padding:1.2rem 1.1rem}
+  .acc{letter-spacing:.05em}
+  .gc-copy{padding:.6rem .8rem}
+  .dock a{width:42px;height:42px}
+  .btn{letter-spacing:.22em;padding:1rem 1.4rem}
+}
+@media(max-width:480px){.corner.in{opacity:.22}}
+
+/* ===== Tipografi lebih nyaman & anggun ===== */
+.muted{font-size:clamp(1.1rem,4.4vw,1.22rem);line-height:1.8}
+.eyebrow{display:block;font:400 .7rem var(--label);letter-spacing:.5em;padding-left:.5em;text-transform:uppercase;text-align:center;color:var(--gold);margin-bottom:.8rem}
+.head{margin-bottom:2.2rem;line-height:1.2}
+.event h3,.person h3,.chapter h3{text-wrap:balance}
+.muted,.serif-q,.quote{text-wrap:pretty}
+
+/* ===== Tombol & formulir lebih halus, mudah disentuh ===== */
+.btn{border-radius:2px;font-family:var(--label);font-weight:500;letter-spacing:.26em;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.98)}
+.btn:disabled{opacity:.6;cursor:wait}
+input,select,textarea{border-bottom-color:rgba(176,69,94,.45);font-size:1rem}
+.dark input,.dark select,.dark textarea{border-bottom-color:rgba(232,169,184,.5)}
+textarea{resize:vertical;min-height:96px}
+select{-webkit-appearance:none;appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23b0455e' stroke-width='1.6'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E") right .2rem center no-repeat;padding-right:1.6rem}
+.radio span{min-height:44px;display:inline-flex;align-items:center}
+::placeholder{color:inherit;opacity:.4}
+
+/* ===== Ucapan: daftar rapi & bisa digulir bila banyak ===== */
+.wish-list{max-height:min(70vh,560px);overflow-y:auto;overscroll-behavior:contain;padding:.4rem .3rem .4rem 0;scrollbar-width:thin;scrollbar-color:rgba(217,183,121,.6) transparent}
+.wish-list:empty{display:none}
+.wish{word-break:break-word}
+
+/* ===== Toast di atas navigasi, aman dari home-bar ===== */
+.toast{bottom:calc(9.5rem + env(safe-area-inset-bottom))}
+
+/* ===== Mode ringan: HP spek rendah / hemat data tetap mulus ===== */
+.lite .pt,.lite .orb,.lite .spk,.lite .veil,.lite .grain,.lite #dust,.lite .fhearts,.lite .light{display:none!important}
+.lite .rv,.lite .w,.lite .ch{filter:none!important}
+.lite .big,.lite .cover .names .wd{animation:none!important}
+
+/* ===== Nama besar: tanda "&" di baris sendiri, di antara Mawar dan Arjun ===== */
+.big .amp{display:block;font-family:var(--disp);font-style:italic;font-weight:500;font-size:.34em;line-height:1;margin:.12em 0 .08em;color:var(--gold);letter-spacing:0;text-shadow:none}

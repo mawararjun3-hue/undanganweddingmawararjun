@@ -45,3 +45,9 @@
 @media(max-width:380px){
   .btn.ghost,#rsvpForm .btn{letter-spacing:.12em;padding-left:.9rem;padding-right:.9rem;font-size:.78rem}
 }
+
+/* ===== Perbaikan: tombol KIRIM di form tidak boleh tetap tersembunyi =====
+   Animasi kilau (luxe.css) menimpa animasi muncul (.form>* ), sehingga tombol tetap transparan.
+   Gabungkan keduanya. */
+.form.in>button.btn{animation:up 1s var(--ease,cubic-bezier(.22,1,.36,1)) .5s both,shineBg 3.8s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.form>button.btn{opacity:1;animation:none}}

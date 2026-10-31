@@ -18,7 +18,6 @@
 
   /* ---- Salam pembuka & pembatas ornamen ---- */
   $("#intro .small").before(rv(mk("p", "salam rv", "Assalamu’alaikum Warahmatullahi Wabarakatuh")));
-  $("#ayat .small").after(rv(mk("span", "divider rv", DIV)));
   $("#couple .couple").before(rv(mk("span", "divider rv", DIV)));
   $("#day .daydate").after(rv(mk("span", "divider rv", DIV)));
 
@@ -107,7 +106,7 @@
   /* karangan simetris */
   const half = S("M170 44C130 44 100 36 50 30") + L(135, 43, 195) + L(108, 39, 160) + L(82, 35, 200) + L(58, 31, 165) + R(60, 6, 36) + R(94, 24, 30) + '<circle cx="42" cy="29" r="3" fill="currentColor"/>';
   const garland = `<svg viewBox="0 0 340 80" aria-hidden="true">${half}<g transform="translate(340 0) scale(-1 1)">${half}</g>${R(140, 10, 60)}</svg>`;
-  ["ayat", "couple", "day", "rsvp", "gift"].forEach(id => { const g = mk("span", "garland rv", garland); $("#" + id + " .orn").after(g); io.observe(g); });
+  ["intro", "couple", "day", "rsvp", "gift"].forEach(id => { const g = mk("span", "garland rv", garland); $("#" + id + " .orn").after(g); io.observe(g); });
 
   /* buket di sudut cover & penutup */
   const bq = `<svg viewBox="0 0 200 200" aria-hidden="true">${S("M0 200C40 150 70 110 120 80")}${S("M0 200C60 170 110 160 170 120")}${S("M0 200C30 140 40 90 70 40")}${L(30, 160, -50)}${L(70, 130, -35)}${L(90, 172, -20)}${L(20, 120, -75)}${L(120, 150, -25)}${R(92, 52, 56)}${R(48, 14, 44)}${R(146, 98, 40)}${R(14, 100, 34, "")}</svg>`;

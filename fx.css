@@ -1,0 +1,47 @@
+/* fx.css — variasi transisi teks (dimuat PALING AKHIR, setelah polish.css) */
+
+/* ===== Efek masuk baru untuk elemen .rv (dipasang lewat data-fx di fx.js) ===== */
+.rv[data-fx=focus]{filter:blur(16px);transform:scale(1.22)}
+.rv[data-fx=drop]{transform:translateY(-44px) scale(.98)}
+.rv[data-fx=skew]{transform:translateX(-34px) skewX(-14deg);filter:blur(6px)}
+.rv[data-fx=spread]{
+  letter-spacing:calc(var(--ls,0px) + .45em);white-space:nowrap;
+  transition-property:opacity,transform,filter,letter-spacing;transition-duration:2s,2s,1.6s,2.4s}
+.rv[data-fx=curtain]{
+  clip-path:inset(0 50% 0 50%);transform:none;
+  transition-property:opacity,transform,filter,clip-path;transition-duration:1.4s,2s,1.6s,1.8s}
+
+.rv.in[data-fx=focus],.rv.in[data-fx=drop],.rv.in[data-fx=skew]{transform:none;filter:blur(0)}
+.rv.in[data-fx=spread]{letter-spacing:var(--ls,0px);transform:none;filter:blur(0)}
+.rv.in[data-fx=curtain]{clip-path:inset(-20px);filter:blur(0)}
+
+/* ===== Kata demi kata: arah & gaya masuk berbeda per kutipan (data-tx) ===== */
+[data-tx] .w{transition-timing-function:var(--e2,cubic-bezier(.22,1,.36,1))}
+[data-tx=focus] .w{filter:blur(12px);transform:scale(1.35)}
+[data-tx=slideL] .w{filter:blur(3px);transform:translateX(-32px)}
+[data-tx=slideR] .w{filter:blur(3px);transform:translateX(32px)}
+[data-tx=drop] .w{filter:blur(3px);transform:translateY(-26px)}
+[data-tx=zoom] .w{filter:blur(6px);transform:scale(.3)}
+[data-tx=flip]{perspective:600px}
+[data-tx=flip] .w{filter:blur(2px);transform:rotateX(-85deg);transform-origin:50% 100%}
+[data-tx].in .w{opacity:1;filter:blur(0);transform:none}
+
+/* ===== Tidak ada gerak bila pengguna memilih "kurangi animasi" ===== */
+@media(prefers-reduced-motion:reduce){
+  .rv[data-fx=focus],.rv[data-fx=drop],.rv[data-fx=skew]{transform:none;filter:none}
+  .rv[data-fx=spread]{letter-spacing:var(--ls,0px)}
+  .rv[data-fx=curtain]{clip-path:none}
+  [data-tx] .w{opacity:1;filter:none;transform:none}
+}
+/* HP spek rendah: tanpa blur berat */
+.lite .rv[data-fx=focus],.lite .rv[data-fx=skew]{filter:none!important}
+.lite [data-tx] .w{filter:none!important}
+
+/* ===== Rapikan di HP kecil ===== */
+@media(max-width:480px){
+  #cine .serif-q br{display:none}
+  #cine .serif-q{text-wrap:balance}
+}
+@media(max-width:380px){
+  .btn.ghost,#rsvpForm .btn{letter-spacing:.12em;padding-left:.9rem;padding-right:.9rem;font-size:.78rem}
+}
